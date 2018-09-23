@@ -13,3 +13,15 @@
     tipo: "idk"
   })
 end
+
+10.times do |index|
+  Student.create({
+    nome: "Nome #{index}",
+    cpf: "#{index}",
+    data_nascimento: Date.new(1994, 5, 20),
+    telefone_celular: 12981805381,
+    genero: "M",
+    tipo_pagamento: "Cartão"
+
+  })
+end
