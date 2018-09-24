@@ -8,15 +8,15 @@
 
 10.times do |index|
   Institution.create({
-    nome: "UNIFESP #{index}",
+    nome: "Universidade #{index}",
     cnpj: "#{index}",
-    tipo: "idk"
+    tipo: "Universidade"
   })
 end
 
 10.times do |index|
   Student.create({
-    nome: "Nome #{index}",
+    nome_estudante: "Nome #{index}",
     cpf: "#{index}",
     data_nascimento: Date.new(1994, 5, 20),
     telefone_celular: 12981805381,

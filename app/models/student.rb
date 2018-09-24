@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
-  validates_uniqueness_of :nome, :cpf
-  validates_presence_of :nome, :cpf, :genero, :tipo_pagamento
+  has_many :enrollments
+  validates_uniqueness_of :nome_estudante, :cpf
+  validates_presence_of :nome_estudante, :cpf, :genero, :tipo_pagamento
   validates :cpf, numericality: { only_integer: true }
   validate :data_nascimento, :data_nascimento_validation
   validates :telefone_celular, numericality: { only_integer: true }

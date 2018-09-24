@@ -1,4 +1,5 @@
 class Institution < ApplicationRecord
+  has_many :enrollments
   validates_uniqueness_of :nome, :cnpj
   validates_presence_of :nome, :cnpj
   validates :cnpj, numericality: { only_integer: true }

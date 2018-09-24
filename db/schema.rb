@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180922211100) do
+ActiveRecord::Schema.define(version: 20180923220313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.decimal "valor_fatura", null: false
+    t.date "data_vencimento", null: false
+    t.string "status", default: "Aberta", null: false
+    t.bigint "enrollment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enrollment_id"], name: "index_bills_on_enrollment_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.decimal "valor_total", null: false
+    t.integer "qtd_faturas", null: false
+    t.integer "dia_vencimento", null: false
+    t.string "nome_curso", null: false
+    t.bigint "institution_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_enrollments_on_institution_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
+  end
 
   create_table "institutions", force: :cascade do |t|
     t.string "nome", null: false
@@ -26,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180922211100) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "nome", null: false
+    t.string "nome_estudante", null: false
     t.string "cpf", null: false
     t.date "data_nascimento"
     t.bigint "telefone_celular"
@@ -35,7 +58,7 @@ ActiveRecord::Schema.define(version: 20180922211100) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cpf"], name: "index_students_on_cpf", unique: true
-    t.index ["nome"], name: "index_students_on_nome", unique: true
+    t.index ["nome_estudante"], name: "index_students_on_nome_estudante", unique: true
   end
 
 end

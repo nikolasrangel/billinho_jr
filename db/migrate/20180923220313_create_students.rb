@@ -1,7 +1,7 @@
 class CreateStudents < ActiveRecord::Migration[5.1]
   def change
     create_table :students do |t|
-      t.string :nome, null: false
+      t.string :nome_estudante, null: false
       t.string :cpf, null: false
       t.date :data_nascimento
       t.bigint :telefone_celular
@@ -10,7 +10,7 @@ class CreateStudents < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :students, :nome, unique: true
+    add_index :students, :nome_estudante, unique: true
     add_index :students, :cpf, unique: true
   end
 end

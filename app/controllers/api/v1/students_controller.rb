@@ -9,29 +9,29 @@ module Api
 
       # Get all students
 			def index
-				@students = Student.select(:id, :nome, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento).order("created_at DESC");
+				@students = Student.select(:id, :nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento).order("created_at DESC");
 				render json: {status: "Success", message: "All students.", data: @students}, status: :ok
 			end
 
       # Get student by id
       def show
         @student_id = params[:id]
-        @student = Student.select(:id, :nome, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento).find(@student_id)
+        @student = Student.select(:id, :nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento).find(@student_id)
         render json: {status: "Success", message: "Student with ID: #{@student_id}.", data: @student}, status: :ok
       end
 
       # Create a new student
       def create
-        params.require([:nome, :cpf, :genero, :tipo_pagamento])
+        params.require([:nome_estudante, :cpf, :genero, :tipo_pagamento])
 
-        @student_data = params.permit(:nome, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento)
+        @student_data = params.permit(:nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento)
 
         # Create object
         @student = Student.new(@student_data)
 
         # Try to save the object into DB
         if @student.save
-					render json: {status: "Success", message: "Student saved.", data: @student.as_json(only: [:id, :nome, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento])}, status: :ok
+					render json: {status: "Success", message: "Student saved.", data: @student.as_json(only: [:id, :nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento])}, status: :ok
 				else
 					render json: {status: "Error", message: "Student not saved.", data: @student.errors}, status: :unprocessable_entity
         end
