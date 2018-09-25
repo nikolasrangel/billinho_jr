@@ -9,8 +9,8 @@ module Api
 
       # Get all institutions
 			def index
-				@institutions = Institution.select(:id, :nome, :cnpj, :tipo).order("created_at DESC");
-				render json: {status:"Success", message:"All institutions.", data:@institutions}, status: :ok
+			  @institutions = Institution.select(:id, :nome, :cnpj, :tipo).order("created_at DESC");
+			  render json: {status:"Success", message:"All institutions.", data:@institutions}, status: :ok
 			end
 
       # Get institution by id
@@ -31,21 +31,19 @@ module Api
 
         # Try to save the object into DB
         if @institution.save
-					render json: {status: "Success", message: "Institution saved.", data: @institution.as_json(only: [:id, :nome, :cnpj, :tipo])}, status: :ok
+				  render json: {status: "Success", message: "Institution saved.", data: @institution.as_json(only: [:id, :nome, :cnpj, :tipo])}, status: :ok
 				else
-					render json: {status: "Error", message: "Institution not saved.", data: @institution.errors}, status: :unprocessable_entity
+				  render json: {status: "Error", message: "Institution not saved.", data: @institution.errors}, status: :unprocessable_entity
         end
         
       end
 
-      # arrumar o codigo do erro
       def error_not_unique
-        render json: {status: "Error", message: "Institution already exists."}, status: :unprocessable_entity
+        render json: {status: "Error", message: "Institution already exists."}, status: :conflict
       end
 
-      # arrumar o codigo do erro
       def error_not_found
-        render json: {status: "Error", message: "Institution not found."}, status: :unprocessable_entity
+        render json: {status: "Error", message: "Institution not found."}, status: :not_found
       end
 
       def error_parameter_missing(error)

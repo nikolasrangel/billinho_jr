@@ -9,8 +9,8 @@ module Api
 
       # Get all enrollments
 			def index
-				@enrollments = Enrollment.select(:id, :student_id, :institution_id, :nome_curso, :valor_total, :qtd_faturas).order("created_at DESC");
-				render json: {status: "Success", message: "All enrollments.", data: @enrollments}, status: :ok
+			  @enrollments = Enrollment.select(:id, :student_id, :institution_id, :nome_curso, :valor_total, :qtd_faturas).order("created_at DESC");
+			  render json: {status: "Success", message: "All enrollments.", data: @enrollments}, status: :ok
 			end
 
       # Get enrollment by id
@@ -34,9 +34,9 @@ module Api
 
         #Try to save the object into DB
         if @enrollment.save
-					render json: {status: "Success", message: "Enrollment saved.", data: @enrollment.as_json(only: [:id, :valor_total, :qtd_faturas, :dia_vencimento, :nome_curso, :institution_id, :student_id])}, status: :ok
+				  render json: {status: "Success", message: "Enrollment saved.", data: @enrollment.as_json(only: [:id, :valor_total, :qtd_faturas, :dia_vencimento, :nome_curso, :institution_id, :student_id])}, status: :ok
 				else
-					render json: {status: "Error", message: "Enrollment not saved.", data: @enrollment.errors}, status: :unprocessable_entity
+				  render json: {status: "Error", message: "Enrollment not saved.", data: @enrollment.errors}, status: :unprocessable_entity
         end
         
       end

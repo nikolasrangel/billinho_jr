@@ -9,8 +9,8 @@ module Api
 
       # Get all students
 			def index
-				@students = Student.select(:id, :nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento).order("created_at DESC");
-				render json: {status: "Success", message: "All students.", data: @students}, status: :ok
+			  @students = Student.select(:id, :nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento).order("created_at DESC");
+			  render json: {status: "Success", message: "All students.", data: @students}, status: :ok
 			end
 
       # Get student by id
@@ -31,9 +31,9 @@ module Api
 
         # Try to save the object into DB
         if @student.save
-					render json: {status: "Success", message: "Student saved.", data: @student.as_json(only: [:id, :nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento])}, status: :ok
+				  render json: {status: "Success", message: "Student saved.", data: @student.as_json(only: [:id, :nome_estudante, :cpf, :data_nascimento, :telefone_celular, :genero, :tipo_pagamento])}, status: :ok
 				else
-					render json: {status: "Error", message: "Student not saved.", data: @student.errors}, status: :unprocessable_entity
+				  render json: {status: "Error", message: "Student not saved.", data: @student.errors}, status: :unprocessable_entity
         end
       end
 

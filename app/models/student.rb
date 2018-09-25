@@ -1,5 +1,6 @@
 class Student < ApplicationRecord
   has_many :enrollments
+  
   validates_uniqueness_of :nome_estudante, :cpf
   validates_presence_of :nome_estudante, :cpf, :genero, :tipo_pagamento
   validates :cpf, numericality: { only_integer: true }

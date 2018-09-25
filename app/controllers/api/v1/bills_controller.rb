@@ -7,8 +7,8 @@ module Api
 
       # Get all bills
 			def index
-				@bills = Bill.select(:id, :valor_fatura, :data_vencimento, :status, :enrollment_id).order("enrollment_id DESC");
-				render json: {status: "Success", message: "All bills.", data: @bills}, status: :ok
+			  @bills = Bill.select(:id, :valor_fatura, :data_vencimento, :status, :enrollment_id).order("enrollment_id DESC");
+			  render json: {status: "Success", message: "All bills.", data: @bills}, status: :ok
 			end
 
       # Get bills for an specific enrollment id
