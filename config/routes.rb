@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
-      resources :institutions, :students, :enrollments
+      resources :institutions, :students, :enrollments, :bills
     end
   end
 end
