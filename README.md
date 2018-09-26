@@ -1,5 +1,6 @@
 # :money_with_wings: Billinho :mortar_board:
 
+Billinho é um projeto
 
 ## Informações da API
 * Todos endpoints retornam um objeto JSON;

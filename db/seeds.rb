@@ -22,6 +22,16 @@ end
     telefone_celular: 12981805381,
     genero: "M",
     tipo_pagamento: "Cartão"
+  })
+end
 
+10.times do |index|
+  Enrollment.create({
+    "valor_total": 1500.00,
+    "qtd_faturas": 4,
+    "dia_vencimento": 20,
+    "nome_curso": "Engenharia da Computação",
+    "institution_id": "#{index}",
+    "student_id": "#{index}"
   })
 end
