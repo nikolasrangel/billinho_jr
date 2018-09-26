@@ -1,0 +1,203 @@
+{
+	"variables": [],
+	"info": {
+		"name": "quero-education-interview",
+		"_postman_id": "d588f46c-78c0-9cd6-1387-8eb41d650157",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Institution",
+			"description": "",
+			"item": [
+				{
+					"name": "GET: institution by id",
+					"request": {
+						"url": "http://localhost:3000/api/v1/institutions/3",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET: all intitutions",
+					"request": {
+						"url": "http://localhost:3000/api/v1/institutions",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST: a new institution",
+					"request": {
+						"url": "http://localhost:3000/api/v1/institutions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Nome da Instituição\",\n\t\"cnpj\": \"9876543210\",\n\t\"tipo\": \"Universidade\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"description": "",
+			"item": [
+				{
+					"name": "GET: all students",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET: student by id",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST: a new student",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome_estudante\": \"Nome do estudante\",\n\t\"cpf\": \"42200000000\",\n\t\"data_nascimento\": \"1994-05-20\",\n\t\"telefone_celular\": \"12981808180\",\n\t\"genero\": \"M\",\n\t\"tipo_pagamento\": \"Cartão\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enrollment",
+			"description": "",
+			"item": [
+				{
+					"name": "POST: a new enrollment to a user",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students/1/enrollments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"valor_total\": 1500.00,\n\t\"qtd_faturas\": 4,\n\t\"dia_vencimento\": 4,\n\t\"nome_curso\": \"Engenharia da Computação\",\n\t\"institution_id\": 3\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET: a enrollment from a student",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students/1/enrollments/11",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET: all student`s enrollments",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students/1/enrollments",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bill",
+			"description": "",
+			"item": [
+				{
+					"name": "GET: all student's bills",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students/6/bills",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET: a bill from a student",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students/6/bills/21",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT: update bill's from a student",
+					"request": {
+						"url": "http://localhost:3000/api/v1/students/6/bills/21",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\": \"Paga\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
