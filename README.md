@@ -18,7 +18,7 @@ A seguir, são listadas as dependências para execução do projeto localmente e
 | Postman | |
 
 Caso seja necessário, configure a senha para o banco de dados no seguinte arquivo:
-> app/config/database.yml
+> config/database.yml
 
 ### Clonando o projeto
 ```bash
@@ -43,22 +43,26 @@ rails s -p 3000
 
 ### Testando os endpoints da API
 
-Importe ao Postman a coleção presente no seguinte caminho:
+Importe ao Postman a coleção presente no seguinte caminho do projeto:
 ```
 tests/education-interview.postman_collection
 ```
 
+Busque, atualize, remova; sinta-se à vontade.
+
 ## Informações da API
 * Todos endpoints retornam um objeto JSON;
 * A resposta de cada requisição possui seu código corresponde da tabela de códigos de status de respostas HTTP;
-* CORS habilitado;
+* CORS habilitado por meio da gem [rack-cors](https://github.com/cyu/rack-cors);
 * Utilização do PostgreSQL como SGBD.
 
 ## Descrição do funcionamento da API
 
+Aqui, é detalhado cada endpoint presente na API, bem como os parâmetros, corpo e resposta das requisições.
+
 ### 1. Instituição
 
-A seguir são descritos os endpoints referentes a entidade Instituição.
+A seguir, são descritos os endpoints referentes a entidade Instituição.
 
 #### 1.1 Obter todas as instituições
 
@@ -159,7 +163,7 @@ POST /v1/institutions
 
 ### 2. Aluno
 
-A seguir são descritos os endpoints referentes a entidade Aluno.
+A seguir, são descritos os endpoints referentes a entidade Aluno.
 
 #### 2.1 Obter todos os alunos
 
@@ -275,7 +279,7 @@ POST /api/v1/students
 
 ### 3. Matrícula
 
-A seguir são descritos os endpoints referentes a entidade Matrícula.
+A seguir, são descritos os endpoints referentes a entidade Matrícula.
 
 #### 3.1 Obter todas as matrículas de um estudante
 
@@ -390,7 +394,7 @@ POST /api/v1/students/:student_id/enrollments
 
 ### 4. Fatura
 
-A seguir são descritos os endpoints referentes a entidade Faturas.
+A seguir, são descritos os endpoints referentes a entidade Faturas.
 
 #### 4.1 Obter todas as faturas para um aluno em específico
 
